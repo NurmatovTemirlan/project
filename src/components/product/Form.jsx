@@ -1,6 +1,7 @@
 import { Button, FormControl, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useProducts } from "../context/ProductContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const init = {
   title: "",
@@ -11,9 +12,33 @@ const init = {
 };
 
 const Form = ({ isEdit }) => {
-  const { createProduct, editProduct } = useProducts();
+  const { createProduct, oneProduct, editProduct } = useProducts();
 
   const [product, setProduct] = useState(init);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isEdit && oneProduct) {
+      setProduct(oneProduct);
+    }
+  }, [oneProduct]);
+
+  function handleEditClick() {
+    for (let key in product) {
+      if (!product[key]) {
+        alert("asasad");
+        return;
+      }
+    }
+    editProduct(product);
+    setProduct(init);
+    navigate("/");
+  }
+  // const handleEditClick = () => {
+  //   editProduct(product);
+  //   setProduct(init);
+  //   navigate("/");
+  // };
 
   function handleInp(e) {
     if (e.target.name === "age") {
@@ -88,6 +113,7 @@ const Form = ({ isEdit }) => {
           variant="outlined"
           fullWidth
           size="large"
+          onClick={handleEditClick}
         >
           Сохранить
         </Button>

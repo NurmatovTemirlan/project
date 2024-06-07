@@ -8,6 +8,14 @@
       "image": "https://upload.wikimedia.org/wikipedia/ru/1/11/Naruto-manga.jpg",
       "video": "",
       "id": 1
+    },
+    {
+      "title": "OnePiece",
+      "genere": "приключения",
+      "age": 16,
+      "tema": "сёнэн-манга за авторством Эйитиро Оды, выходящая с 22 июля 1997 года по настоящее время в журнале Weekly Shonen Jump. Объединена в 108 танкобонов. One Piece повествует о приключениях пиратской команды под названием «Пираты Соломенной Шляпы» во главе с капитаном Манки Д. Луффи",
+      "image": "https://upload.wikimedia.org/wikipedia/en/9/90/One_Piece%2C_Volume_61_Cover_%28Japanese%29.jpg",
+      "id": 2
     }
   ]
 }

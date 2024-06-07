@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useProducts } from "../context/ProductContextProvider";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -24,6 +25,7 @@ const ExpandMore = styled((props) => {
 
 export default function ProductCard({ elem }) {
   const [expanded, setExpanded] = React.useState(false);
+  const { deleteProduct } = useProducts();
   const navigate = useNavigate();
 
   const handleExpandClick = () => {
@@ -31,7 +33,7 @@ export default function ProductCard({ elem }) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, margin: "15px" }}>
       <CardHeader title={elem.title} subheader={elem.genere} />
 
       <CardMedia
@@ -62,6 +64,15 @@ export default function ProductCard({ elem }) {
           onClick={() => navigate(`/edit/${elem.id}`)}
         >
           Изменить
+        </Button>
+        <Button
+          sx={{ marginLeft: "10px" }}
+          variant="contained"
+          size="small"
+          color="error"
+          onClick={() => deleteProduct(elem.id)}
+        >
+          Удалить
         </Button>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
