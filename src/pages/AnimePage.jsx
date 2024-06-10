@@ -3,7 +3,7 @@ import ProductList from "../components/product/ProductList";
 
 const AnimePage = () => {
   return (
-    <div>
+    <div className="background">
       <section
         style={{
           display: "flex",

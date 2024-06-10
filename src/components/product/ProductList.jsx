@@ -4,10 +4,11 @@ import ProductCard from "./ProductCard";
 import { Box, Pagination } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
 import PaginationControlled from "./Pagination";
+import FilterProduct from "./FilterProduct";
 
 const ProductList = () => {
   const { getProducts, products } = useProducts();
-  // const [paginateParams, setPaginateParams] = useSearchParams();
+  const [paginateParams, setPaginateParams] = useSearchParams();
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const ProductList = () => {
   console.log(count);
   return (
     <Box>
+      <FilterProduct />
       <Box
         sx={{
           display: "flex",

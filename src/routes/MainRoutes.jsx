@@ -25,7 +25,7 @@ const PUBLIC_POUTES = [
   { id: 2, link: "/anime", element: <AnimePage /> },
   { id: 3, link: "/movies", element: <Movies /> },
   { id: 4, link: "/cartoon", element: <Cartoon /> },
-  { id: 5, link: "/details", element: <AnimeDetails /> },
+  { id: 5, link: "/details/:id", element: <AnimeDetails /> },
   { id: 6, link: "/register", element: <RegisterPage /> },
   { id: 7, link: "/login", element: <LoginPage /> },
 ];

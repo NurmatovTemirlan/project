@@ -82,7 +82,7 @@ export default function ProductCard({ elem }) {
           variant="contained"
           size="small"
           sx={{ fontSize: "0.7rem", padding: "4px 8px" }}
-          onClick={() => navigate(`/details`)}
+          onClick={() => navigate(`/details/${elem.id}`)}
         >
           Смотреть
         </Button>

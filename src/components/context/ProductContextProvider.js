@@ -2,13 +2,14 @@ import axios from "axios";
 import { createContext, useContext, useReducer } from "react";
 import React from "react";
 import { API, API_SERIES } from "../../helpers/const";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const productContext = createContext();
 export const useProducts = () => useContext(productContext);
 const ProductContextProvider = ({ children }) => {
   const INIT_STATE = {
     products: [],
-    oneProduct: {},
+    oneProduct: null,
     video: [],
   };
   const reducer = (state = INIT_STATE, action) => {
@@ -23,6 +24,8 @@ const ProductContextProvider = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
+  const location = useLocation();
+  const navigate = useNavigate();
   // ! create
   const createProduct = async (newProduct) => {
     try {
@@ -72,7 +75,20 @@ const ProductContextProvider = ({ children }) => {
       payload: data,
     });
   };
+
+  function fetchByParams(query, value) {
+    const paramsFromUrl = new URLSearchParams(location.search);
+    if (value === "all") {
+      paramsFromUrl.delete(query);
+    } else {
+      paramsFromUrl.set(query, value);
+    }
+    const url = `${location.pathname}?${paramsFromUrl.toString()}`;
+    navigate(url);
+  }
+
   const values = {
+    fetchByParams,
     createProduct,
     getProducts,
     products: state.products,

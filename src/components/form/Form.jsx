@@ -8,6 +8,7 @@ const init = {
   genere: "",
   age: "",
   tema: "",
+  category: "",
   image: "",
 };
 
@@ -32,7 +33,7 @@ const Form = ({ isEdit }) => {
     }
     editProduct(product);
     setProduct(init);
-    navigate("/anime");
+    navigate("/home");
   }
 
   function handleInp(e) {
@@ -92,6 +93,14 @@ const Form = ({ isEdit }) => {
         fullWidth
         onChange={handleInp}
         value={product.tema}
+      />
+      <TextField
+        placeholder="Категория"
+        variant="outlined"
+        name="category"
+        fullWidth
+        onChange={handleInp}
+        value={product.category}
       />
       <TextField
         placeholder="Icon"
