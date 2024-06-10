@@ -16,11 +16,12 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Button from "@mui/material/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import AdminPanel from "./AdminPanel";
+import AddIcon from "@mui/icons-material/Add";
 
 import SvgIcon from "@mui/material/SvgIcon";
+import { useProducts } from "../context/ProductContextProvider";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -73,6 +74,20 @@ function HomeIcon(props) {
 }
 
 export default function Navbar() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = React.useState(searchParams.get("q") || "");
+  const { getProducts } = useProducts();
+
+  React.useEffect(() => {
+    setSearchParams({
+      q: search,
+    });
+  }, [search]);
+
+  React.useEffect(() => {
+    getProducts();
+  }, [searchParams]);
+
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -189,7 +204,7 @@ export default function Navbar() {
               sx={{ mr: 2 }}
               onClick={() => navigate("/admin")}
             >
-              <AdminPanel />
+              <AddIcon />
             </IconButton>
             <IconButton onClick={() => navigate("/home")}>
               <HomeIcon />
@@ -201,7 +216,7 @@ export default function Navbar() {
               <Button color="inherit" onClick={() => navigate("/movies")}>
                 Фильмы
               </Button>
-              <Button color="inherit" onClick={() => navigate("/cartoons")}>
+              <Button color="inherit" onClick={() => navigate("/cartoon")}>
                 Мультфильмы
               </Button>
             </Box>
@@ -211,6 +226,8 @@ export default function Navbar() {
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search…"
                 inputProps={{ "aria-label": "search" }}
               />

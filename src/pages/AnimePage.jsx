@@ -5,7 +5,11 @@ const AnimePage = () => {
   return (
     <div>
       <section
-        style={{ display: "flex", justifyContent: "center", fontSize: "32px" }}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          fontSize: "32px",
+        }}
       >
         <div>
           <h1

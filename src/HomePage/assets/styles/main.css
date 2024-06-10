@@ -139,7 +139,41 @@ body {
   align-items: center;
 
   background-color: var(--header-bg);
-  background-image: url("C:\Users\user\Desktop\JS23\LibraryReact\xakaton\src\HomePage\assets\5mVu2BC9XLcV.jpg");
+  background-image: url("../5mVu2BC9XLcV.jpg");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center center;
+
+  color: var(--header-text);
+  text-align: center;
+}
+.headerr {
+  padding: 40px 0;
+  min-height: 695px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--header-bg);
+  background-image: url("../164613-malysh_joda-grogu-grut-joda-v_mandalorianskie-3840x2160.jpg");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center center;
+
+  color: var(--header-text);
+  text-align: center;
+}
+.headerrr {
+  padding: 40px 0;
+  min-height: 695px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--header-bg);
+  background-image: url("..//164613-malysh_joda-grogu-grut-joda-v_mandalorianskie-3840x2160.jpg");
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center center;
@@ -152,8 +186,28 @@ body {
   padding: 0 15px;
   max-width: 660px;
 }
+.headerr__wrapper {
+  padding: 0 15px;
+  max-width: 660px;
+}
+.headerrr__wrapper {
+  padding: 0 15px;
+  max-width: 660px;
+}
 
 .header__title {
+  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.headerr__title {
+  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.headerrr__title {
   margin-bottom: 20px;
   font-size: 40px;
   font-weight: 700;
@@ -164,8 +218,24 @@ body {
   font-size: 60px;
   font-weight: 700;
 }
+.headerr__title strong {
+  font-size: 60px;
+  font-weight: 700;
+}
+.headerrr__title strong {
+  font-size: 60px;
+  font-weight: 700;
+}
 
 .header__title em {
+  font-style: normal;
+  color: var(--accent);
+}
+.headerr__title em {
+  font-style: normal;
+  color: var(--accent);
+}
+.headerrr__title em {
   font-style: normal;
   color: var(--accent);
 }
@@ -175,8 +245,24 @@ body {
   font-size: 18px;
   line-height: 1.333;
 }
+.headerr__text {
+  margin-bottom: 40px;
+  font-size: 18px;
+  line-height: 1.333;
+}
+.headerrr__text {
+  margin-bottom: 40px;
+  font-size: 18px;
+  line-height: 1.333;
+}
 
 .header__text p + p {
+  margin-top: 0.5em;
+}
+.headerr__text p + p {
+  margin-top: 0.5em;
+}
+.headerrr__text p + p {
   margin-top: 0.5em;
 }
 

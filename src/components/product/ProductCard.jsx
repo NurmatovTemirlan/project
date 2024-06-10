@@ -28,53 +28,83 @@ export default function ProductCard({ elem }) {
   const { deleteProduct } = useProducts();
   const navigate = useNavigate();
 
+  const MAX_TITLE_LENGTH = 20;
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  return (
-    <Card sx={{ maxWidth: 345, margin: "15px" }}>
-      <CardHeader title={elem.title} subheader={elem.genere} />
+  const truncatedTitle =
+    elem.title.length > MAX_TITLE_LENGTH
+      ? `${elem.title.slice(0, MAX_TITLE_LENGTH)}...`
+      : elem.title;
 
+  return (
+    <Card
+      className="title"
+      sx={{
+        maxWidth: 300,
+        margin: "20px",
+        borderRadius: "20px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        transition: "transform 0.3s, box-shadow 0.3s",
+        "&:hover": {
+          transform: "translateY(-5px)",
+          boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
+        },
+      }}
+    >
+      <CardHeader
+        title={truncatedTitle}
+        subheader={elem.genere}
+        sx={{ textAlign: "center", fontSize: "1rem" }}
+      />
       <CardMedia
         component="img"
-        height="194"
+        height="120"
         image={elem.image}
-        alt="Paella dish"
+        alt={elem.title}
+        sx={{ objectFit: "cover" }}
       />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {elem.tema}
+      <CardContent sx={{ padding: "8px" }}>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {elem.description}
         </Typography>
-        <Typography>{elem.age}+</Typography>
+        <Typography variant="subtitle2" color="textSecondary">
+          {elem.age}+
+        </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions
+        disableSpacing
+        sx={{ justifyContent: "space-between", padding: "8px" }}
+      >
         <Button
           variant="contained"
           size="small"
-          onClick={() => navigate(`/details/${elem.id}`)}
+          sx={{ fontSize: "0.7rem", padding: "4px 8px" }}
+          onClick={() => navigate(`/details`)}
         >
           Смотреть
         </Button>
         <Button
-          sx={{ marginLeft: "10px" }}
           variant="contained"
           size="small"
           color="secondary"
+          sx={{ fontSize: "0.7rem", padding: "4px 8px" }}
           onClick={() => navigate(`/edit/${elem.id}`)}
         >
           Изменить
         </Button>
         <Button
-          sx={{ marginLeft: "10px" }}
           variant="contained"
           size="small"
           color="error"
+          sx={{ fontSize: "0.7rem", padding: "4px 8px" }}
           onClick={() => deleteProduct(elem.id)}
         >
           Удалить
         </Button>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="add to favorites" sx={{ padding: "4px" }}>
           <FavoriteIcon />
         </IconButton>
       </CardActions>
